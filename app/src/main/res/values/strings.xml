@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">bpomerle-SubBook</string>
+    <string name="name_field">Name</string>
+    <string name="date_field">Date</string>
+    <string name="amount_field">Amount</string>
+    <string name="comment_field">Comment</string>
+    <string name="required">Required</string>
+    <string name="optional">Optional</string>
+    <string name="total">Total</string>
+    <string name="zero">$0.00</string>
+    <string name="add">Add</string>
+    <string name="dateError">Check your date format!</string>
+    <string name="amountError">Check your amount!</string>
+    <string name="nameError">Get a name!</string>
+    <string name="delete">Delete</string>
+
 </resources>

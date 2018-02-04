@@ -1,6 +1,7 @@
 package com.example.brady.bpomerle_subbook;
 
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Brady on 2018-01-26.
@@ -55,6 +56,10 @@ public class Subscription {
 
     public void setComment(String comment){
         this.comment = comment;
+    }
+
+    public String toString(){
+        return String.format(Locale.CANADA,"%1$-15s | %2$tY-%<tm-%<td | $ %3$-12.2f", name, date, amount);
     }
 
 }
