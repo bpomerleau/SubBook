@@ -59,7 +59,7 @@ public class Subscription {
     }
 
     public String toString(){
-        return String.format(Locale.CANADA,"%1$-15s | %2$tY-%<tm-%<td | $ %3$-12.2f", name, date, amount);
+        return String.format(Locale.CANADA,"%1$-20s | %2$tY-%<tm-%<td | $ %3$-12.2f", name, date, amount);
     }
 
 }

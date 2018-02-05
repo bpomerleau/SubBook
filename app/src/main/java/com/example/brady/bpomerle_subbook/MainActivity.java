@@ -29,11 +29,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-
+/**
+ * Manage and display user input Subscription information
+ * @author Brady Pomerleau
+ * @see EditMenu
+ * @see Subscription
+ */
 public class MainActivity extends AppCompatActivity {
-    protected static int REQUEST_ADD = 10;
-    protected static int REQUEST_EDIT = 11;
-    protected static int RESULT_DELETE = 12;
+    protected static final int REQUEST_ADD = 10;
+    protected static final int REQUEST_EDIT = 11;
+    protected static final int RESULT_DELETE = 12;
     private static final String FILENAME = ".listdata.sav";
     private ListView sublist;
     private FloatingActionButton addButton;
@@ -43,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Subscription> accountBook;
     private ArrayAdapter<Subscription> adapter;
 
-    private int array_selection;
+    private int arraySelection; //this value describes the index of the subscription last clicked
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sublist = findViewById(R.id.sublist);
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         sublist.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                array_selection = position;
+                arraySelection = position;
                 editButton.setVisibility(View.VISIBLE);
             }
         });
@@ -71,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 Intent sendIntent = new Intent(getApplicationContext(),EditMenu.class);
                 Bundle bundle = new Bundle();
-                Subscription s = accountBook.get(array_selection);
+                Subscription s = accountBook.get(arraySelection);
                 bundle.putString("name",s.getName());
                 bundle.putString("date", String.format(Locale.CANADA,"%1$tY-%<tm-%<td", s.getDate()));
                 bundle.putFloat("amount", s.getAmount());
@@ -83,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart(){
+    public void onStart(){
         super.onStart();
 
         loadFromFile();
@@ -98,12 +103,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Overridden startActivityForResult so that requestCode is always stored in passed Intent
+     * @param intent data package
+     * @param requestCode integer code describing type of request
+     */
     @Override
     public void startActivityForResult(Intent intent, int requestCode) {
         intent.putExtra("requestCode", requestCode);
         super.startActivityForResult(intent, requestCode);
     }
 
+    /**
+     * Overridden onActivityResult - depending on type of request as well as type of return,
+     *      create, edit, or delete
+     * @param requestCode request code of Intent starting activity
+     * @param resultCode result code returned by activity
+     * @param data Intent containing user input subscription information
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
@@ -127,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (requestCode == REQUEST_EDIT){
                 Bundle bundle = data.getExtras();
                 if (bundle != null && !bundle.isEmpty()){
-                    Subscription s = accountBook.get(array_selection);
+                    Subscription s = accountBook.get(arraySelection);
                     s.setName(bundle.getString("name"));
                     s.setAmount(bundle.getFloat("amount"));
                     try {
@@ -140,14 +157,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } else if (resultCode == RESULT_DELETE){
-            accountBook.remove(array_selection);
+            accountBook.remove(arraySelection);
             adapter.notifyDataSetChanged();
             saveInFile();
             editButton.setVisibility(View.GONE);
         }
     }
 
-    // adapted from lonelyTwitter class demo
+    /**
+     * load ArrayList info from file
+     * adapted from lonelyTwitter class demo 2018-02-03
+     */
     private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
@@ -166,7 +186,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // adapted from lonelyTwitter class demo
+    /**
+     * save ArrayList info to file
+     * adapted from lonelyTwitter class demo 2018-02-03
+     */
     private void saveInFile() {
         try {
             FileOutputStream fos = openFileOutput(FILENAME,

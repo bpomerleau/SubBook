@@ -15,6 +15,13 @@ import java.util.Locale;
 
 import static com.example.brady.bpomerle_subbook.MainActivity.RESULT_DELETE;
 
+/**
+ * Edit Subscriptions activity
+ * @author Brady Pomerleau
+ * @see AppCompatActivity
+ * @see MainActivity
+ * @see Subscription
+ */
 public class EditMenu extends AppCompatActivity {
 
     private EditText nameInput;
@@ -26,7 +33,7 @@ public class EditMenu extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_menu);
         nameInput = findViewById(R.id.name_input);
@@ -43,10 +50,11 @@ public class EditMenu extends AppCompatActivity {
                 try {
                     if (nameInput.getText().toString().equals(""))
                         throw new HorseWithNoNameException();
-                    Float.valueOf(amountInput.getText().toString());
-                    new SimpleDateFormat("yyyy-MM-dd").parse(dateInput.getText().toString());
-                    if(commentInput.getText().toString().length() > 30
-                        || nameInput.getText().toString().length() > 20)
+                    if (Float.valueOf(amountInput.getText().toString()) < 0)
+                        throw new NegativeNumberException();
+                    new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA).parse(dateInput.getText().toString());
+                    if((commentInput.getText().toString().length() > 30)
+                        || (nameInput.getText().toString().length() > 20))
                            throw new TooLongException();
                 } catch (HorseWithNoNameException e) {
                     Snackbar.make(addButton, getResources().getString(R.string.nameError), 1000).show();
@@ -63,6 +71,12 @@ public class EditMenu extends AppCompatActivity {
                 } catch (TooLongException e) {
                     Snackbar.make(addButton, "Don't write a novel here!", 1000).show();
                     setResult(RESULT_CANCELED);
+                    return;
+                } catch (NegativeNumberException e) {
+                    Snackbar.make(addButton, "No negative numbers!", 1000).show();
+                    setResult(RESULT_CANCELED);
+                    return;
+
                 }
                 Intent returnIntent = new Intent(EditMenu.this,MainActivity.class);
                 Bundle bundle = new Bundle();
