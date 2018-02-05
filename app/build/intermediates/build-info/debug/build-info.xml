@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="25"
+    build-mode="HOT_WARM"
+    density="xxhdpi"
+    format="10"
+    plugin-version="3.0.0"
+    timestamp="1517867959332"
+    token="-2201312085282579086"
+    verifier="COMPATIBLE" >
+
+    <task
+        name="javac"
+        duration="313" />
+    <task
+        name="instant-run-dex"
+        duration="70" />
+    <task
+        name="instant-run-transform"
+        duration="44" />
+    <task
+        name="verifier"
+        duration="14" />
+
+    <artifact
+        location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
+
+    <build
+        build-mode="FULL"
+        timestamp="1517854820357"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\outputs\apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1517867412443"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1517867841086"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\builds\debug\1517867841086\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1517867894822"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\builds\debug\1517867894822\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1517867959332"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Brady\AndroidStudioProjects\bpomerleSubBook\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+
+</instant-run>
